@@ -7,14 +7,17 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const squareGeometry = new THREE.PlaneGeometry(2.2, 2.2);
-const squareMaterial = new THREE.MeshBasicMaterial({
-    color: 0xD22B2B
-});
+const lineGeometry = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(-1, -1, 0),
+    new THREE.Vector3(1, 1, 0)
+]);
+const lineMaterial = new THREE.LineBasicMaterial({ color: 0xD22B2B });
 
-const square = new THREE.Mesh(squareGeometry, squareMaterial);
-square.position.set(0, 0, 0);
-
-scene.add(square);
+const line = new THREE.Line(lineGeometry, lineMaterial);
+line.position.set(0, 0, 0);
+scene.add(line);
 
 renderer.render(scene, camera);
+
+
+
